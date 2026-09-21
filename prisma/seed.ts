@@ -3,24 +3,6 @@ import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
-const SAMPLE_DIAGRAM = `<mxfile host="embed.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="embed" version="22.0.0">
-  <diagram id="1" name="Proceso">
-    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0">
-      <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
-        <mxCell id="2" value="Inicio" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="120" y="80" width="100" height="60" as="geometry"/></mxCell>
-        <mxCell id="3" value="Paso 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="100" y="180" width="140" height="60" as="geometry"/></mxCell>
-        <mxCell id="4" value="Paso 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="100" y="280" width="140" height="60" as="geometry"/></mxCell>
-        <mxCell id="5" value="Fin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="120" y="380" width="100" height="60" as="geometry"/></mxCell>
-        <mxCell id="6" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="2" target="3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="7" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="3" target="4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="8" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="4" target="5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-</mxfile>`;
-
 function makeDiagram(title: string, steps: string[]): string {
   const cells = [
     `<mxCell id="0"/>`,
@@ -44,7 +26,6 @@ function makeDiagram(title: string, steps: string[]): string {
   const finId = id;
   id++;
 
-  // edges
   cells.push(
     `<mxCell id="${id}" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="2" target="${stepIds[0]}" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>`
   );
@@ -78,26 +59,33 @@ async function main() {
   await prisma.usuario.deleteMany();
   await prisma.area.deleteMany();
 
-  console.log("Creando áreas...");
-  const finanzas = await prisma.area.create({
-    data: { nombre: "Finanzas" },
-  });
-  const operaciones = await prisma.area.create({
-    data: { nombre: "Operaciones" },
-  });
-  const tecnologia = await prisma.area.create({
-    data: { nombre: "Tecnología" },
-  });
+  console.log("Creando areas...");
+  const wm = await prisma.area.create({ data: { nombre: "WM" } });
+  const inversiones = await prisma.area.create({ data: { nombre: "Inversiones" } });
+  const growth = await prisma.area.create({ data: { nombre: "Growth" } });
+  const adminFinanzas = await prisma.area.create({ data: { nombre: "Admin & Finanzas" } });
+  const rrhh = await prisma.area.create({ data: { nombre: "RRHH" } });
+  const legal = await prisma.area.create({ data: { nombre: "Legal" } });
+  const fondos = await prisma.area.create({ data: { nombre: "Fondos" } });
+  const operaciones = await prisma.area.create({ data: { nombre: "Operaciones" } });
+  const foro = await prisma.area.create({ data: { nombre: "Foro" } });
+  const ai = await prisma.area.create({ data: { nombre: "AI" } });
 
   console.log("Creando proyectos...");
-  const projERP = await prisma.proyecto.create({
-    data: { nombre: "Migración ERP", areaId: finanzas.id },
+  const projOnboarding = await prisma.proyecto.create({
+    data: { nombre: "Onboarding de clientes", areaId: wm.id },
   });
-  const projLogistica = await prisma.proyecto.create({
-    data: { nombre: "Optimización logística", areaId: operaciones.id },
+  const projDueDiligence = await prisma.proyecto.create({
+    data: { nombre: "Due diligence", areaId: inversiones.id },
   });
-  const projInfra = await prisma.proyecto.create({
-    data: { nombre: "Infraestructura cloud", areaId: tecnologia.id },
+  const projCampanas = await prisma.proyecto.create({
+    data: { nombre: "Campanas de captacion", areaId: growth.id },
+  });
+  const projCierreContable = await prisma.proyecto.create({
+    data: { nombre: "Cierre contable mensual", areaId: adminFinanzas.id },
+  });
+  const projAutomatizacion = await prisma.proyecto.create({
+    data: { nombre: "Automatizacion de procesos", areaId: ai.id },
   });
 
   console.log("Creando usuarios...");
@@ -108,7 +96,7 @@ async function main() {
       email: "colaborador_a@sabbi.com",
       nombre: "Ana Torres",
       cargo: "Analista de procesos",
-      areaId: finanzas.id,
+      areaId: operaciones.id,
       esAprobador: false,
       password: hash,
     },
@@ -117,7 +105,7 @@ async function main() {
   const aprobador = await prisma.usuario.create({
     data: {
       email: "aprobador@sabbi.com",
-      nombre: "Carlos Méndez",
+      nombre: "Carlos Mendez",
       cargo: "Jefe de Operaciones",
       areaId: operaciones.id,
       esAprobador: true,
@@ -128,9 +116,9 @@ async function main() {
   const colaboradorB = await prisma.usuario.create({
     data: {
       email: "colaborador_b@sabbi.com",
-      nombre: "Lucía Ramírez",
-      cargo: "Coordinadora de TI",
-      areaId: tecnologia.id,
+      nombre: "Lucia Ramirez",
+      cargo: "Coordinadora de Growth",
+      areaId: growth.id,
       esAprobador: false,
       password: hash,
     },
@@ -139,9 +127,9 @@ async function main() {
   const colaboradorC = await prisma.usuario.create({
     data: {
       email: "colaborador_c@sabbi.com",
-      nombre: "Pedro Gutiérrez",
+      nombre: "Pedro Gutierrez",
       cargo: "Analista financiero",
-      areaId: finanzas.id,
+      areaId: adminFinanzas.id,
       esAprobador: false,
       password: hash,
     },
@@ -151,95 +139,97 @@ async function main() {
 
   const procesosData = [
     {
+      nombre: "Onboarding de nuevo cliente WM",
+      descripcion:
+        "Proceso de alta e incorporacion de un nuevo cliente de Wealth Management, desde la firma del contrato hasta la apertura de cuenta.",
+      notas:
+        "Requiere documentacion KYC completa. Coordinar con Legal para la revision del contrato.",
+      areaId: wm.id,
+      proyectoId: projOnboarding.id,
+      autorId: colaboradorA.id,
+      aprobadorId: aprobador.id,
+      xml: makeDiagram("Onboarding WM", [
+        "Recibir solicitud del cliente",
+        "Recopilar documentacion KYC",
+        "Revision de Legal",
+        "Apertura de cuenta",
+        "Asignar asesor",
+        "Reunion de bienvenida",
+      ]),
+    },
+    {
+      nombre: "Evaluacion de oportunidad de inversion",
+      descripcion:
+        "Proceso de analisis y evaluacion de una nueva oportunidad de inversion para el comite.",
+      notas:
+        "El analisis debe incluir valoracion, riesgos y tesis de inversion. Plazo maximo: 15 dias habiles.",
+      areaId: inversiones.id,
+      proyectoId: projDueDiligence.id,
+      autorId: colaboradorA.id,
+      aprobadorId: aprobador.id,
+      xml: makeDiagram("Evaluacion inversion", [
+        "Recibir propuesta",
+        "Analisis financiero",
+        "Due diligence",
+        "Preparar memo de inversion",
+        "Presentar a comite",
+        "Decision del comite",
+      ]),
+    },
+    {
+      nombre: "Lanzamiento de campana de captacion",
+      descripcion:
+        "Proceso para planificar, ejecutar y medir una campana de captacion de nuevos miembros.",
+      notas:
+        "Coordinar con el equipo de contenido para los materiales. El presupuesto debe ser aprobado por Admin & Finanzas.",
+      areaId: growth.id,
+      proyectoId: projCampanas.id,
+      autorId: colaboradorB.id,
+      aprobadorId: aprobador.id,
+      xml: makeDiagram("Campana de captacion", [
+        "Definir objetivo y audiencia",
+        "Aprobar presupuesto",
+        "Crear materiales",
+        "Lanzar campana",
+        "Monitorear metricas",
+        "Reporte de resultados",
+      ]),
+    },
+    {
       nombre: "Cierre contable mensual",
       descripcion:
         "Proceso de cierre de libros contables al final de cada mes, incluyendo conciliaciones y ajustes.",
       notas:
-        "Requiere acceso al ERP. El cierre debe completarse antes del día 5 del mes siguiente. Coordinar con Tesorería.",
-      areaId: finanzas.id,
-      proyectoId: projERP.id,
-      autorId: colaboradorA.id,
+        "El cierre debe completarse antes del dia 5 del mes siguiente. Coordinar con Tesoreria.",
+      areaId: adminFinanzas.id,
+      proyectoId: projCierreContable.id,
+      autorId: colaboradorC.id,
       aprobadorId: aprobador.id,
       xml: makeDiagram("Cierre contable", [
-        "Extraer balances del ERP",
+        "Extraer balances",
         "Conciliar cuentas bancarias",
         "Registrar ajustes",
-        "Generar balance de comprobación",
+        "Generar balance de comprobacion",
         "Revisar y aprobar",
       ]),
     },
     {
-      nombre: "Recepción de mercadería",
+      nombre: "Implementacion de modelo AI",
       descripcion:
-        "Proceso de recepción, verificación y registro de mercadería en almacén.",
+        "Proceso para evaluar, desarrollar y desplegar un modelo de inteligencia artificial en produccion.",
       notas:
-        "El proveedor debe enviar la guía de remisión con 24h de anticipación. Verificar cantidades contra la orden de compra.",
-      areaId: operaciones.id,
-      proyectoId: projLogistica.id,
+        "Requiere aprobacion del comite de datos. Validar cumplimiento con Legal antes del despliegue.",
+      areaId: ai.id,
+      proyectoId: projAutomatizacion.id,
       autorId: colaboradorA.id,
       aprobadorId: aprobador.id,
-      xml: makeDiagram("Recepción mercadería", [
-        "Recibir guía de remisión",
-        "Verificar cantidades",
-        "Inspección de calidad",
-        "Registrar en sistema",
-        "Ubicar en almacén",
-      ]),
-    },
-    {
-      nombre: "Despliegue a producción",
-      descripcion:
-        "Procedimiento estándar para desplegar cambios al ambiente de producción.",
-      notas:
-        "Solo se despliega los martes y jueves. Requiere aprobación del líder técnico y al menos una revisión de código.",
-      areaId: tecnologia.id,
-      proyectoId: projInfra.id,
-      autorId: colaboradorB.id,
-      aprobadorId: aprobador.id,
-      xml: makeDiagram("Deploy a producción", [
-        "Crear PR y solicitar revisión",
-        "Pasar pruebas automatizadas",
-        "Aprobación del líder técnico",
-        "Merge a main",
-        "Deploy automático",
-        "Verificar en producción",
-      ]),
-    },
-    {
-      nombre: "Emisión de factura electrónica",
-      descripcion:
-        "Proceso de generación y envío de facturas electrónicas a SUNAT.",
-      notas:
-        "Verificar que el RUC del cliente esté activo. Las facturas se envían en lote cada hora.",
-      areaId: finanzas.id,
-      proyectoId: null,
-      autorId: colaboradorC.id,
-      aprobadorId: aprobador.id,
-      xml: makeDiagram("Facturación electrónica", [
-        "Validar datos del cliente",
-        "Generar XML de factura",
-        "Firmar digitalmente",
-        "Enviar a SUNAT",
-        "Registrar respuesta",
-      ]),
-    },
-    {
-      nombre: "Gestión de incidentes TI",
-      descripcion:
-        "Proceso de atención y resolución de incidentes de tecnología reportados por usuarios.",
-      notas:
-        "Los incidentes críticos escalan automáticamente al jefe de área. SLA: crítico 2h, alto 8h, medio 24h.",
-      areaId: tecnologia.id,
-      proyectoId: null,
-      autorId: colaboradorB.id,
-      aprobadorId: aprobador.id,
-      xml: makeDiagram("Gestión de incidentes", [
-        "Recibir reporte",
-        "Clasificar severidad",
-        "Asignar técnico",
-        "Diagnosticar y resolver",
-        "Verificar con usuario",
-        "Cerrar ticket",
+      xml: makeDiagram("Implementacion AI", [
+        "Definir caso de uso",
+        "Recopilar y preparar datos",
+        "Entrenar modelo",
+        "Validar resultados",
+        "Aprobacion de Legal",
+        "Desplegar en produccion",
       ]),
     },
   ];
@@ -270,8 +260,8 @@ async function main() {
   }
 
   console.log("Seed completado:");
-  console.log("  - 3 áreas");
-  console.log("  - 3 proyectos");
+  console.log("  - 10 areas (WM, Inversiones, Growth, Admin & Finanzas, RRHH, Legal, Fondos, Operaciones, Foro, AI)");
+  console.log("  - 5 proyectos");
   console.log("  - 4 usuarios");
   console.log("  - 5 procesos aprobados con diagrama");
 }
