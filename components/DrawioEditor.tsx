@@ -24,12 +24,11 @@ export default function DrawioEditor({ initialXml, onSave }: DrawioEditorProps) 
 
       if (data.event === "init") {
         setReady(true);
-        if (initialXml) {
-          iframeRef.current?.contentWindow?.postMessage(
-            JSON.stringify({ action: "load", xml: initialXml }),
-            "https://embed.diagrams.net"
-          );
-        }
+        const xml = initialXml || "";
+        iframeRef.current?.contentWindow?.postMessage(
+          JSON.stringify({ action: "load", xml }),
+          "https://embed.diagrams.net"
+        );
       }
 
       if (data.event === "save") {
