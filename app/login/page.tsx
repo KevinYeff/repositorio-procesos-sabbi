@@ -3,7 +3,6 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -35,11 +34,10 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-hueso">
       <div className="w-full max-w-sm rounded-2xl border border-border-soft bg-white p-8 shadow-sm">
         <div className="mb-6 flex flex-col items-center">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/images/sabbi-wordmark-green.png"
             alt="Sabbi"
-            width={130}
-            height={36}
             className="mb-3 h-9 w-auto"
           />
           <p className="text-sm text-ink-caption">
