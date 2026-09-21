@@ -18,8 +18,9 @@ export default function DrawioViewer({ xml }: DrawioViewerProps) {
     const div = document.createElement("div");
     div.className = "mxgraph";
     div.setAttribute("data-mxgraph", JSON.stringify({
-      highlight: "#0000ff",
+      highlight: "#79a82d",
       nav: true,
+      center: true,
       resize: true,
       toolbar: "zoom layers lightbox",
       edit: "_blank",
@@ -47,7 +48,7 @@ export default function DrawioViewer({ xml }: DrawioViewerProps) {
   return (
     <div
       ref={containerRef}
-      className="min-h-[400px] rounded-md border border-gray-200 bg-white p-4"
+      className="min-h-[400px] rounded-xl border border-border-soft bg-white p-4"
     />
   );
 }
