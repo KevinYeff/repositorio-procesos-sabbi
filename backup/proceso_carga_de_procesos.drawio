@@ -1,0 +1,122 @@
+<mxfile host="app.diagrams.net" agent="Claude" version="24.0.0">
+  <diagram id="carga-procesos-sabbi" name="Carga de un proceso nuevo">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3400" pageHeight="900" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="t" value="Repositorio de Procesos SABBI: flujo para cargar un proceso nuevo" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#334f1b;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="1400" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Carriles -->
+        <mxCell id="l1" value="Colaborador" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=44;fillColor=#334f1b;strokeColor=#79a82d;fontColor=#f4f4ed;swimlaneFillColor=#F4F4ED;fontStyle=1;fontSize=13;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="3260" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="l2" value="Plataforma" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=44;fillColor=#334f1b;strokeColor=#79a82d;fontColor=#f4f4ed;swimlaneFillColor=#FFFFFF;fontStyle=1;fontSize=13;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="40" y="250" width="3260" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="l3" value="IA" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=44;fillColor=#7562c6;strokeColor=#7562c6;fontColor=#FFFFFF;swimlaneFillColor=#F4F4ED;fontStyle=1;fontSize=13;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="3260" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="l4" value="Líder de área" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=44;fillColor=#334f1b;strokeColor=#79a82d;fontColor=#f4f4ed;swimlaneFillColor=#FFFFFF;fontStyle=1;fontSize=13;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="40" y="570" width="3260" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Nodos -->
+        <mxCell id="n1" value="Inicio: el colaborador ingresa a la plataforma" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#223311;strokeColor=#223311;fontColor=#f4f4ed;fontStyle=1;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="100" y="135" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n2" value="Autentica con cuenta Microsoft (Entra ID) y valida permisos" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334f1b;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="330" y="285" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n3" value="Selecciona el área: Legal, Operaciones, Fondos, Inversiones, AI, Growth o Comercial" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#EEF3E4;strokeColor=#79a82d;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="560" y="135" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n4" value="Crea un proceso nuevo: nombre y objetivo" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#EEF3E4;strokeColor=#79a82d;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="790" y="135" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n5" value="Describe el proceso: responsables (áreas), inputs y outputs. Puede adjuntar documentos" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#EEF3E4;strokeColor=#79a82d;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="135" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n6" value="Diagrama el flujo en el editor visual: pasos y decisiones" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#EEF3E4;strokeColor=#79a82d;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="135" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n7" value="Guarda el borrador y lo envía a la IA" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334f1b;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="285" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n8" value="Extrae y normaliza al formato estándar: objetivo, responsables, pasos, inputs, outputs, decisiones, herramientas, verificación, riesgos" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#EFEDF8;strokeColor=#7562c6;strokeWidth=2;fontColor=#334f1b;fontSize=11;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="1710" y="440" width="170" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="n9" value="Clasifica los pasos: transporte, captura, criterio y verificación" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#EFEDF8;strokeColor=#7562c6;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="1940" y="445" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d1" value="¿Falta información?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#c3ed74;strokeColor=#334f1b;strokeWidth=2;fontColor=#223311;fontStyle=1;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="2170" y="430" width="170" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="n10" value="Completa la información que la IA solicita" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#EEF3E4;strokeColor=#79a82d;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="2170" y="135" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n11" value="Genera el resumen operativo y las instrucciones claras" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#EFEDF8;strokeColor=#7562c6;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="2400" y="445" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n12" value="Revisa el proceso y su diagrama" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#F6FBE8;strokeColor=#79a82d;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="2400" y="610" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" value="¿Aprobado?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#c3ed74;strokeColor=#334f1b;strokeWidth=2;fontColor=#223311;fontStyle=1;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="2630" y="595" width="170" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="n13" value="Ajusta el proceso según los comentarios" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#EEF3E4;strokeColor=#79a82d;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="2630" y="135" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n14" value="Publica la versión y registra el cambio en el historial" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334f1b;strokeWidth=2;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="2860" y="285" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="n15" value="Fin: proceso disponible en el repositorio con trazabilidad" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#223311;strokeColor=#223311;fontColor=#f4f4ed;fontStyle=1;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="3090" y="285" width="170" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Conexiones -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n1" target="n2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n2" target="n3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n3" target="n4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n4" target="n5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n5" target="n6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n6" target="n7"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n7" target="n8"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n8" target="n9"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n9" target="d1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" value="Sí" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;fontStyle=1;fontColor=#334f1b;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="d1" target="n10"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontStyle=1;fontColor=#334f1b;labelBackgroundColor=#F4F4ED;" edge="1" parent="1" source="d1" target="n11"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="n11" target="n12"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n12" target="d2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;fontStyle=1;fontColor=#334f1b;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="d2" target="n13"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e15" value="Sí" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0.5;entryY=1;fontStyle=1;fontColor=#334f1b;labelBackgroundColor=#F4F4ED;" edge="1" parent="1" source="d2" target="n14"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;strokeWidth=2;endArrow=block;endFill=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="n14" target="n15"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Bucles de retrabajo (morado, punteado) -->
+        <mxCell id="r1" value="Vuelve a describir con lo faltante" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#7562c6;strokeWidth=2;dashed=1;endArrow=block;endFill=1;exitX=0.5;exitY=0;entryX=0.75;entryY=0;fontColor=#7562c6;fontSize=11;fontStyle=1;labelBackgroundColor=#F4F4ED;" edge="1" parent="1" source="n10" target="n5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2255" y="115"/>
+              <mxPoint x="1147" y="115"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r2" value="Corrige y vuelve a enviar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#7562c6;strokeWidth=2;dashed=1;endArrow=block;endFill=1;exitX=0.5;exitY=0;entryX=0.25;entryY=0;fontColor=#7562c6;fontSize=11;fontStyle=1;labelBackgroundColor=#F4F4ED;" edge="1" parent="1" source="n13" target="n5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2715" y="98"/>
+              <mxPoint x="1062" y="98"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Nota -->
+        <mxCell id="note" value="&lt;b&gt;Formato estándar de cada proceso:&lt;/b&gt; objetivo, responsables, pasos, entradas, salidas, decisiones, herramientas involucradas, reglas de verificación y riesgos o excepciones. Cada publicación genera una nueva versión con su registro de cambios." style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;spacingLeft=14;spacingRight=14;fillColor=#EEF3E4;strokeColor=#79a82d;fontColor=#334f1b;fontSize=12;fontFamily=Hanken Grotesk;" vertex="1" parent="1">
+          <mxGeometry x="40" y="750" width="1100" height="60" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

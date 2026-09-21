@@ -1,0 +1,181 @@
+<mxfile host="app.diagrams.net" agent="Claude" version="24.0.0">
+  <diagram id="proc-sabbi-01" name="Proceso Repositorio SABBI">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1450" pageHeight="1650" math="0" shadow="0" background="#f4f4ed">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="hdr" value="PROCESO: Registro, Aprobacion y Consulta de Procesos — Repositorio SABBI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#223311;strokeColor=#223311;fontColor=#f4f4ed;fontStyle=1;fontSize=14;fontFamily=Helvetica;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1040" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="laneA" value="Colaborador A (Autor)" style="swimlane;startSize=34;html=1;horizontal=1;fillColor=#ffffff;strokeColor=#79a82d;fontColor=#334f1b;fontStyle=1;fontSize=13;verticalAlign=middle;swimlaneFillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="40" y="76" width="260" height="1540" as="geometry" />
+        </mxCell>
+        <mxCell id="laneS" value="Sistema / Plataforma" style="swimlane;startSize=34;html=1;horizontal=1;fillColor=#f4f4ed;strokeColor=#79a82d;fontColor=#334f1b;fontStyle=1;fontSize=13;verticalAlign=middle;swimlaneFillColor=#f4f4ed;" vertex="1" parent="1">
+          <mxGeometry x="300" y="76" width="260" height="1540" as="geometry" />
+        </mxCell>
+        <mxCell id="laneAp" value="Jefe de Area (Aprobador)" style="swimlane;startSize=34;html=1;horizontal=1;fillColor=#f3f3ff;strokeColor=#79a82d;fontColor=#334f1b;fontStyle=1;fontSize=13;verticalAlign=middle;swimlaneFillColor=#f3f3ff;" vertex="1" parent="1">
+          <mxGeometry x="560" y="76" width="260" height="1540" as="geometry" />
+        </mxCell>
+        <mxCell id="laneB" value="Colaborador B (Consulta)" style="swimlane;startSize=34;html=1;horizontal=1;fillColor=#f6fbe8;strokeColor=#79a82d;fontColor=#334f1b;fontStyle=1;fontSize=13;verticalAlign=middle;swimlaneFillColor=#f6fbe8;" vertex="1" parent="1">
+          <mxGeometry x="820" y="76" width="260" height="1540" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n1" value="Inicio&#10;(Colaborador accede)" style="rounded=1;arcSize=60;whiteSpace=wrap;html=1;fillColor=#334f1b;strokeColor=#223311;fontColor=#f4f4ed;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="130" width="160" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" value="Autenticacion con&#10;Microsoft 365 (Entra ID)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#eef3e4;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="330" y="205" width="200" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" value="Que desea&#10;hacer?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#eef3e4;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="300" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" value="Completa formulario:&#10;nombre, descripcion, notas,&#10;area, proyecto, aprobador" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="70" y="420" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" value="Solicita el diagrama a&#10;su Claude (genera XML .drawio)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="70" y="540" width="200" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" value="Importa y ajusta en&#10;draw.io embebido" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="70" y="626" width="200" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="n7" value="XML valido&#10;y renderiza?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#eef3e4;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="712" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n8" value="Guarda proceso&#10;Estado: PENDIENTE&#10;+ registro de auditoria" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#eef3e4;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="330" y="828" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="n9" value="Notifica al&#10;aprobador designado" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="330" y="928" width="200" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="n10" value="Revisa el proceso&#10;en su bandeja" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="590" y="1012" width="200" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="n11" value="Aprueba&#10;el proceso?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#efedf8;strokeColor=#7562c6;fontColor=#334f1b;fontSize=11;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1100" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n14" value="Estado: APROBADO&#10;+ registro de auditoria" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#eef3e4;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="330" y="1216" width="200" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="n16" value="Rechaza con&#10;comentario" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#efedf8;strokeColor=#7562c6;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="590" y="1216" width="200" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="n15" value="Repositorio&#10;(PostgreSQL)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#334f1b;strokeColor=#223311;fontColor=#f4f4ed;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="350" y="1330" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="n20" value="Busca por nombre/&#10;descripcion + filtros&#10;(area, proyecto, autor)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="850" y="1006" width="200" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="n21" value="Selecciona proceso&#10;(solo aprobados)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="850" y="1112" width="200" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="n22" value="Visualiza: descripcion,&#10;notas y diagrama (visor)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#79a82d;fontColor=#334f1b;fontSize=11;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="850" y="1204" width="200" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="n23" value="Fin" style="rounded=1;arcSize=60;whiteSpace=wrap;html=1;fillColor=#334f1b;strokeColor=#223311;fontColor=#f4f4ed;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="870" y="1300" width="160" height="44" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c1" value="ISO 27001&#10;A.5.15 Control de acceso&#10;A.5.16 Gestion de identidades (Entra ID)&#10;A.8.5 Autenticacion segura" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#f3f3ff;strokeColor=#7562c6;dashed=1;fontColor=#334f1b;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="200" width="270" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="ISO 27001&#10;A.5.3 Segregacion de funciones&#10;(el autor no puede ser su aprobador)" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#f3f3ff;strokeColor=#7562c6;dashed=1;fontColor=#334f1b;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="425" width="270" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="ISO 27001&#10;A.8.15 Registro y trazabilidad&#10;(log de auditoria del cambio de estado)" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#f3f3ff;strokeColor=#7562c6;dashed=1;fontColor=#334f1b;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="831" width="270" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="ISO 27001&#10;A.5.18 Derechos de acceso&#10;Aprobacion formal segun rol" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#f3f3ff;strokeColor=#7562c6;dashed=1;fontColor=#334f1b;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="1105" width="270" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="ISO 27001&#10;A.8.3 Restriccion de acceso a la informacion&#10;(solo procesos aprobados son visibles)" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#f3f3ff;strokeColor=#7562c6;dashed=1;fontColor=#334f1b;fontSize=10;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="1335" width="270" height="66" as="geometry" />
+        </mxCell>
+
+        <mxCell id="leg" value="Convenciones (flujograma ISO 5807)&#10;Ovalo: inicio / fin&#10;Rectangulo: proceso / accion&#10;Rombo: decision&#10;Cilindro: almacen de datos (BD)&#10;Recuadro morado punteado: control ISO 27001&#10;&#10;Nota: ISO 27001 no define simbolos de diagrama;&#10;aqui se mapean sus controles (Anexo A) a cada&#10;punto del proceso. Las formas siguen ISO 5807." style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e2e1d6;fontColor=#334f1b;fontSize=10;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="1430" width="270" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n1" target="n2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n2" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="Documentar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n3" target="n4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="Consultar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n3" target="n20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n4" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n5" target="n6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n6" target="n7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="Si" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n7" target="n8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="No (corregir)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#b23b3b;fontColor=#b23b3b;fontSize=10;endArrow=block;dashed=1;" edge="1" parent="1" source="n7" target="n6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n8" target="n9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n9" target="n10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n10" target="n11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" value="Si" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n11" target="n14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n11" target="n16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="Devuelve a A&#10;para corregir" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#b23b3b;fontColor=#b23b3b;fontSize=10;endArrow=block;dashed=1;" edge="1" parent="1" source="n16" target="n6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n14" target="n15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" value="Lee procesos&#10;aprobados" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#79a82d;fontColor=#3f5a1f;fontSize=10;endArrow=open;dashed=1;" edge="1" parent="1" source="n15" target="n21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n20" target="n21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n21" target="n22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#334f1b;fontColor=#334f1b;fontSize=10;endArrow=block;" edge="1" parent="1" source="n22" target="n23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lc1" style="html=1;endArrow=none;dashed=1;strokeColor=#7562c6;" edge="1" parent="1" source="n2" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lc2" style="html=1;endArrow=none;dashed=1;strokeColor=#7562c6;" edge="1" parent="1" source="n4" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lc3" style="html=1;endArrow=none;dashed=1;strokeColor=#7562c6;" edge="1" parent="1" source="n8" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lc4" style="html=1;endArrow=none;dashed=1;strokeColor=#7562c6;" edge="1" parent="1" source="n11" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lc5" style="html=1;endArrow=none;dashed=1;strokeColor=#7562c6;" edge="1" parent="1" source="n15" target="c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

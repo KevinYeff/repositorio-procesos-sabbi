@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  nombre      String
+  cargo       String?
+  areaId      String?  @map("area_id")
+  esAprobador Boolean  @default(false) @map("es_aprobador")
+  password    String
+
+  area                Area?        @relation(fields: [areaId], references: [id])
+  procesosCreados     Proceso[]    @relation("AutorProceso")
+  procesosAsignados   Proceso[]    @relation("AprobadorProceso")
+  aprobaciones        Aprobacion[]
+
+  @@map("usuarios")
+}
+
+model Area {
+  id        String     @id @default(cuid())
+  nombre    String     @unique
+
+  usuarios  Usuario[]
+  proyectos Proyecto[]
+  procesos  Proceso[]
+
+  @@map("areas")
+}
+
+model Proyecto {
+  id     String  @id @default(cuid())
+  nombre String
+  areaId String  @map("area_id")
+
+  area     Area      @relation(fields: [areaId], references: [id])
+  procesos Proceso[]
+
+  @@map("proyectos")
+}
+
+enum EstadoProceso {
+  PENDIENTE
+  APROBADO
+  RECHAZADO
+}
+
+model Proceso {
+  id           String        @id @default(cuid())
+  nombre       String
+  descripcion  String?
+  notas        String?
+  areaId       String        @map("area_id")
+  proyectoId   String?       @map("proyecto_id")
+  autorId      String        @map("autor_id")
+  aprobadorId  String        @map("aprobador_id")
+  estado       EstadoProceso @default(PENDIENTE)
+  contenidoXml String        @map("contenido_xml") @db.Text
+  fecha        DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+
+  area         Area          @relation(fields: [areaId], references: [id])
+  proyecto     Proyecto?     @relation(fields: [proyectoId], references: [id])
+  autor        Usuario       @relation("AutorProceso", fields: [autorId], references: [id])
+  aprobador    Usuario       @relation("AprobadorProceso", fields: [aprobadorId], references: [id])
+  aprobaciones Aprobacion[]
+
+  @@map("procesos")
+}
+
+model Aprobacion {
+  id          String   @id @default(cuid())
+  procesoId   String   @map("proceso_id")
+  aprobadorId String   @map("aprobador_id")
+  decision    String
+  comentario  String?
+  fecha       DateTime @default(now())
+
+  proceso   Proceso @relation(fields: [procesoId], references: [id])
+  aprobador Usuario @relation(fields: [aprobadorId], references: [id])
+
+  @@map("aprobaciones")
+}
