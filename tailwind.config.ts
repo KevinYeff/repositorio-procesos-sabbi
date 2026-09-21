@@ -7,7 +7,23 @@ const config: Config = {
     "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        hueso: "#f4f4ed",
+        "verde-sabbi": "#79a82d",
+        "verde-profundo": "#334f1b",
+        "verde-noche": "#223311",
+        lima: "#c3ed74",
+        morado: "#7562c6",
+        lavanda: "#b5b3ff",
+        "ink-body": "#566347",
+        "ink-caption": "#6b7a5a",
+        "border-soft": "#e2e1d6",
+      },
+      fontFamily: {
+        sans: ["'Hanken Grotesk'", "system-ui", "-apple-system", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

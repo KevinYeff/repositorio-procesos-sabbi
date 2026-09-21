@@ -14,16 +14,17 @@ export default async function RegistrarPage() {
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-gray-900">
+      <span className="inline-block rounded-md bg-verde-sabbi/10 px-2.5 py-1 text-xs font-bold uppercase tracking-widest text-verde-sabbi">
+        Registro
+      </span>
+      <h1 className="mt-2 mb-6 text-2xl font-bold text-verde-profundo">
         Registrar nuevo proceso
       </h1>
-      <div className="rounded-lg bg-white p-6 shadow-sm">
-        <ProcessForm
-          areas={areas}
-          aprobadores={aprobadores}
-          currentUserId={session.user.id}
-        />
-      </div>
+      <ProcessForm
+        areas={areas}
+        aprobadores={aprobadores}
+        currentUserId={session.user.id}
+      />
     </div>
   );
 }

@@ -12,13 +12,16 @@ export default async function AprobarPage() {
 
   return (
     <div>
-      <h1 className="mb-6 text-2xl font-bold text-gray-900">
-        Procesos pendientes de aprobación
+      <span className="inline-block rounded-md bg-morado/10 px-2.5 py-1 text-xs font-bold uppercase tracking-widest text-morado">
+        Aprobaciones
+      </span>
+      <h1 className="mt-2 mb-6 text-2xl font-bold text-verde-profundo">
+        Procesos pendientes
       </h1>
 
       {procesos.length === 0 ? (
-        <div className="rounded-lg bg-white p-8 text-center shadow-sm">
-          <p className="text-gray-500">No tienes procesos pendientes</p>
+        <div className="rounded-2xl border border-border-soft bg-white p-8 text-center">
+          <p className="text-ink-caption">No tienes procesos pendientes</p>
         </div>
       ) : (
         <div className="space-y-4">

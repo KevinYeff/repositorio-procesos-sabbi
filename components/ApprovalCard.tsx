@@ -18,7 +18,6 @@ interface ApprovalCardProps {
 
 export default function ApprovalCard({ proceso }: ApprovalCardProps) {
   const router = useRouter();
-  const [showDetail, setShowDetail] = useState(false);
   const [comentario, setComentario] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -47,57 +46,46 @@ export default function ApprovalCard({ proceso }: ApprovalCardProps) {
   }
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-5">
+    <div className="rounded-2xl border border-border-soft bg-white p-5 shadow-sm">
       <div className="flex items-start justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-gray-900">
+          <h3 className="text-lg font-bold text-verde-profundo">
             {proceso.nombre}
           </h3>
           {proceso.descripcion && (
-            <p className="mt-1 text-sm text-gray-600">{proceso.descripcion}</p>
+            <p className="mt-1 text-sm text-ink-body">{proceso.descripcion}</p>
           )}
-          <div className="mt-2 flex flex-wrap gap-2 text-xs text-gray-500">
-            <span className="rounded bg-gray-100 px-2 py-0.5">
+          <div className="mt-2 flex flex-wrap gap-2 text-xs">
+            <span className="rounded-md bg-verde-sabbi/10 px-2 py-0.5 font-semibold text-verde-sabbi">
               {proceso.area.nombre}
             </span>
             {proceso.proyecto && (
-              <span className="rounded bg-gray-100 px-2 py-0.5">
+              <span className="rounded-md bg-hueso px-2 py-0.5 text-ink-caption">
                 {proceso.proyecto.nombre}
               </span>
             )}
-            <span>Autor: {proceso.autor.nombre}</span>
-            <span>
+            <span className="text-ink-caption">Autor: {proceso.autor.nombre}</span>
+            <span className="text-ink-caption">
               {new Date(proceso.fecha).toLocaleDateString("es-PE")}
             </span>
           </div>
         </div>
-        <button
-          onClick={() => setShowDetail(!showDetail)}
-          className="text-sm text-blue-600 hover:text-blue-800"
+        <a
+          href={`/proceso/${proceso.id}`}
+          target="_blank"
+          className="text-sm font-medium text-verde-sabbi hover:text-verde-profundo"
         >
-          {showDetail ? "Ocultar" : "Ver diagrama"}
-        </button>
+          Ver diagrama
+        </a>
       </div>
 
-      {showDetail && (
-        <div className="mt-4">
-          <a
-            href={`/proceso/${proceso.id}`}
-            target="_blank"
-            className="text-sm text-blue-600 hover:underline"
-          >
-            Abrir detalle completo en nueva pestaña
-          </a>
-        </div>
-      )}
-
-      <div className="mt-4 space-y-3 border-t border-gray-100 pt-4">
+      <div className="mt-4 space-y-3 border-t border-border-soft pt-4">
         <textarea
           value={comentario}
           onChange={(e) => setComentario(e.target.value)}
           placeholder="Comentario (obligatorio para rechazar)"
           rows={2}
-          className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="block w-full rounded-xl border border-border-soft bg-hueso px-3 py-2 text-sm text-verde-profundo shadow-sm focus:border-verde-sabbi focus:outline-none focus:ring-1 focus:ring-verde-sabbi"
         />
 
         {error && <p className="text-sm text-red-600">{error}</p>}
@@ -106,14 +94,14 @@ export default function ApprovalCard({ proceso }: ApprovalCardProps) {
           <button
             onClick={() => handleDecision("APROBADO")}
             disabled={loading}
-            className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700 disabled:opacity-50"
+            className="rounded-full bg-verde-profundo px-5 py-2 text-sm font-bold text-hueso transition-colors hover:bg-verde-noche disabled:opacity-50"
           >
             Aprobar
           </button>
           <button
             onClick={() => handleDecision("RECHAZADO")}
             disabled={loading}
-            className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700 disabled:opacity-50"
+            className="rounded-full border border-morado bg-white px-5 py-2 text-sm font-bold text-morado transition-colors hover:bg-morado/5 disabled:opacity-50"
           >
             Rechazar
           </button>

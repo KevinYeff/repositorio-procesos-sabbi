@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
@@ -20,11 +21,17 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="border-b border-gray-200 bg-white">
+    <nav className="bg-verde-noche">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         <div className="flex items-center gap-8">
-          <Link href="/" className="text-lg font-bold text-blue-700">
-            SABBI Procesos
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/sabbi-wordmark-bone.png"
+              alt="Sabbi"
+              width={100}
+              height={28}
+              className="h-7 w-auto"
+            />
           </Link>
           <div className="flex gap-1">
             {links.map((link) => (
@@ -33,8 +40,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? "bg-blue-50 text-blue-700"
-                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                    ? "bg-verde-profundo text-lima"
+                    : "text-hueso/80 hover:bg-verde-profundo hover:text-hueso"
                 }`}
               >
                 {link.label}
@@ -43,19 +50,19 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-hueso/70">
             {session.user.nombre}
             {session.user.esAprobador && (
-              <span className="ml-1 rounded bg-amber-100 px-1.5 py-0.5 text-xs font-medium text-amber-700">
+              <span className="ml-2 rounded-md bg-morado/20 px-2 py-0.5 text-xs font-semibold text-lavanda">
                 Aprobador
               </span>
             )}
           </span>
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
-            className="rounded-md px-3 py-1.5 text-sm text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700"
+            className="rounded-md px-3 py-1.5 text-sm text-hueso/60 transition-colors hover:bg-verde-profundo hover:text-hueso"
           >
-            Cerrar sesión
+            Cerrar sesion
           </button>
         </div>
       </div>

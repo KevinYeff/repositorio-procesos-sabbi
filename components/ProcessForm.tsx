@@ -11,6 +11,9 @@ interface FormProps {
   currentUserId: string;
 }
 
+const inputClass =
+  "mt-1 block w-full rounded-xl border border-border-soft bg-hueso px-3 py-2 text-sm text-verde-profundo shadow-sm focus:border-verde-sabbi focus:outline-none focus:ring-1 focus:ring-verde-sabbi";
+
 export default function ProcessForm({
   areas,
   aprobadores,
@@ -74,141 +77,143 @@ export default function ProcessForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid gap-6 md:grid-cols-2">
-        <div>
+      <div className="rounded-2xl border border-border-soft bg-white p-6 shadow-sm">
+        <div className="grid gap-6 md:grid-cols-2">
+          <div>
+            <label
+              htmlFor="nombre"
+              className="block text-sm font-medium text-verde-profundo"
+            >
+              Nombre del proceso *
+            </label>
+            <input
+              id="nombre"
+              name="nombre"
+              required
+              className={inputClass}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="areaId"
+              className="block text-sm font-medium text-verde-profundo"
+            >
+              Area *
+            </label>
+            <select
+              id="areaId"
+              name="areaId"
+              required
+              value={selectedArea}
+              onChange={(e) => loadProyectos(e.target.value)}
+              className={inputClass}
+            >
+              <option value="">Seleccionar area</option>
+              {areas.map((a) => (
+                <option key={a.id} value={a.id}>
+                  {a.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label
+              htmlFor="proyectoId"
+              className="block text-sm font-medium text-verde-profundo"
+            >
+              Proyecto
+            </label>
+            <select
+              id="proyectoId"
+              name="proyectoId"
+              className={inputClass}
+              disabled={!selectedArea}
+            >
+              <option value="">General</option>
+              {proyectos.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label
+              htmlFor="aprobadorId"
+              className="block text-sm font-medium text-verde-profundo"
+            >
+              Aprobador *
+            </label>
+            <select
+              id="aprobadorId"
+              name="aprobadorId"
+              required
+              className={inputClass}
+            >
+              <option value="">Seleccionar aprobador</option>
+              {filteredAprobadores.map((a) => (
+                <option key={a.id} value={a.id}>
+                  {a.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="mt-6">
           <label
-            htmlFor="nombre"
-            className="block text-sm font-medium text-gray-700"
+            htmlFor="descripcion"
+            className="block text-sm font-medium text-verde-profundo"
           >
-            Nombre del proceso *
+            Descripcion
           </label>
-          <input
-            id="nombre"
-            name="nombre"
-            required
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          <textarea
+            id="descripcion"
+            name="descripcion"
+            rows={2}
+            className={inputClass}
+            placeholder="Que es este proceso?"
           />
         </div>
 
-        <div>
+        <div className="mt-6">
           <label
-            htmlFor="areaId"
-            className="block text-sm font-medium text-gray-700"
+            htmlFor="notas"
+            className="block text-sm font-medium text-verde-profundo"
           >
-            Área *
+            Notas
           </label>
-          <select
-            id="areaId"
-            name="areaId"
-            required
-            value={selectedArea}
-            onChange={(e) => loadProyectos(e.target.value)}
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-          >
-            <option value="">Seleccionar área</option>
-            {areas.map((a) => (
-              <option key={a.id} value={a.id}>
-                {a.nombre}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label
-            htmlFor="proyectoId"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Proyecto
-          </label>
-          <select
-            id="proyectoId"
-            name="proyectoId"
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-            disabled={!selectedArea}
-          >
-            <option value="">General</option>
-            {proyectos.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.nombre}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label
-            htmlFor="aprobadorId"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Aprobador *
-          </label>
-          <select
-            id="aprobadorId"
-            name="aprobadorId"
-            required
-            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-          >
-            <option value="">Seleccionar aprobador</option>
-            {filteredAprobadores.map((a) => (
-              <option key={a.id} value={a.id}>
-                {a.nombre}
-              </option>
-            ))}
-          </select>
+          <textarea
+            id="notas"
+            name="notas"
+            rows={2}
+            className={inputClass}
+            placeholder="Dependencias, responsables, como ejecutarlo..."
+          />
         </div>
       </div>
 
-      <div>
-        <label
-          htmlFor="descripcion"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Descripción
-        </label>
-        <textarea
-          id="descripcion"
-          name="descripcion"
-          rows={2}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-          placeholder="¿Qué es este proceso?"
-        />
-      </div>
-
-      <div>
-        <label
-          htmlFor="notas"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Notas
-        </label>
-        <textarea
-          id="notas"
-          name="notas"
-          rows={2}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-          placeholder="Dependencias, dueños de insumos, cómo ejecutarlo..."
-        />
-      </div>
-
-      <div>
-        <label className="mb-2 block text-sm font-medium text-gray-700">
+      <div className="rounded-2xl border border-border-soft bg-white p-6 shadow-sm">
+        <label className="mb-2 block text-sm font-bold text-verde-profundo">
           Diagrama del proceso *
         </label>
-        <p className="mb-2 text-xs text-gray-500">
-          Crea o importa tu diagrama en el editor. Presiona el botón de guardar
+        <p className="mb-3 text-xs text-ink-caption">
+          Crea o importa tu diagrama en el editor. Presiona el boton de guardar
           dentro del editor para capturar el XML.
         </p>
         <DrawioEditor onSave={handleXmlSave} />
         {xmlSaved && (
-          <p className="mt-2 text-sm text-green-600">
+          <p className="mt-2 text-sm font-semibold text-verde-sabbi">
             Diagrama guardado correctamente
           </p>
         )}
       </div>
 
       {error && (
-        <p className="rounded-md bg-red-50 p-3 text-sm text-red-600">
+        <p className="rounded-xl bg-red-50 p-3 text-sm text-red-600">
           {error}
         </p>
       )}
@@ -217,7 +222,7 @@ export default function ProcessForm({
         <button
           type="submit"
           disabled={saving}
-          className="rounded-md bg-blue-600 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
+          className="rounded-full bg-morado px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-morado/90 disabled:opacity-50"
         >
           {saving ? "Guardando..." : "Registrar proceso"}
         </button>

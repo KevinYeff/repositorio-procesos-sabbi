@@ -22,31 +22,32 @@ export default async function ProcesoPage({
 
   if (!canView) notFound();
 
-  const estadoColor: Record<string, string> = {
-    PENDIENTE: "bg-yellow-100 text-yellow-800",
-    APROBADO: "bg-green-100 text-green-800",
-    RECHAZADO: "bg-red-100 text-red-800",
+  const estadoStyles: Record<string, string> = {
+    PENDIENTE: "bg-lima/30 text-verde-profundo",
+    APROBADO: "bg-verde-sabbi/10 text-verde-sabbi",
+    RECHAZADO: "bg-morado/10 text-morado",
   };
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-4">
-        <Link
-          href="/"
-          className="text-sm text-blue-600 hover:text-blue-800"
-        >
-          &larr; Volver
-        </Link>
-      </div>
+      <Link
+        href="/"
+        className="inline-flex items-center text-sm font-medium text-verde-sabbi hover:text-verde-profundo"
+      >
+        &larr; Volver a consulta
+      </Link>
 
-      <div className="rounded-lg bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border border-border-soft bg-white p-6 shadow-sm">
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <span className="inline-block rounded-md bg-verde-sabbi/10 px-2.5 py-1 text-xs font-bold uppercase tracking-widest text-verde-sabbi">
+              {proceso.area.nombre}
+            </span>
+            <h1 className="mt-2 text-2xl font-bold text-verde-noche">
               {proceso.nombre}
             </h1>
             <span
-              className={`mt-2 inline-block rounded-full px-3 py-0.5 text-xs font-medium ${estadoColor[proceso.estado]}`}
+              className={`mt-2 inline-block rounded-full px-3 py-0.5 text-xs font-semibold ${estadoStyles[proceso.estado]}`}
             >
               {proceso.estado}
             </span>
@@ -54,76 +55,76 @@ export default async function ProcesoPage({
         </div>
 
         {proceso.descripcion && (
-          <div className="mt-4">
-            <h2 className="text-sm font-medium text-gray-700">Descripción</h2>
-            <p className="mt-1 text-sm text-gray-600">{proceso.descripcion}</p>
+          <div className="mt-5 rounded-xl border-l-4 border-verde-sabbi bg-verde-sabbi/5 p-4">
+            <h2 className="text-sm font-bold text-verde-profundo">Descripcion</h2>
+            <p className="mt-1 text-sm text-ink-body">{proceso.descripcion}</p>
           </div>
         )}
 
         {proceso.notas && (
-          <div className="mt-4">
-            <h2 className="text-sm font-medium text-gray-700">Notas</h2>
-            <p className="mt-1 whitespace-pre-wrap text-sm text-gray-600">
+          <div className="mt-4 rounded-xl border-l-4 border-lavanda bg-lavanda/5 p-4">
+            <h2 className="text-sm font-bold text-verde-profundo">Notas</h2>
+            <p className="mt-1 whitespace-pre-wrap text-sm text-ink-body">
               {proceso.notas}
             </p>
           </div>
         )}
 
-        <div className="mt-4 grid gap-4 text-sm text-gray-600 md:grid-cols-2">
+        <div className="mt-5 grid gap-4 text-sm text-ink-body md:grid-cols-2">
           <div>
-            <span className="font-medium text-gray-700">Área:</span>{" "}
+            <span className="font-semibold text-verde-profundo">Area:</span>{" "}
             {proceso.area.nombre}
           </div>
           {proceso.proyecto && (
             <div>
-              <span className="font-medium text-gray-700">Proyecto:</span>{" "}
+              <span className="font-semibold text-verde-profundo">Proyecto:</span>{" "}
               {proceso.proyecto.nombre}
             </div>
           )}
           <div>
-            <span className="font-medium text-gray-700">Autor:</span>{" "}
+            <span className="font-semibold text-verde-profundo">Autor:</span>{" "}
             {proceso.autor.nombre}
           </div>
           <div>
-            <span className="font-medium text-gray-700">Aprobador:</span>{" "}
+            <span className="font-semibold text-verde-profundo">Aprobador:</span>{" "}
             {proceso.aprobador.nombre}
           </div>
           <div>
-            <span className="font-medium text-gray-700">Fecha:</span>{" "}
+            <span className="font-semibold text-verde-profundo">Fecha:</span>{" "}
             {new Date(proceso.fecha).toLocaleDateString("es-PE")}
           </div>
         </div>
 
         {proceso.aprobaciones.length > 0 && (
-          <div className="mt-6 border-t border-gray-100 pt-4">
-            <h2 className="text-sm font-medium text-gray-700">
-              Historial de aprobación
+          <div className="mt-6 border-t border-border-soft pt-4">
+            <h2 className="text-sm font-bold text-verde-profundo">
+              Historial de aprobacion
             </h2>
             <div className="mt-2 space-y-2">
               {proceso.aprobaciones.map((a) => (
                 <div
                   key={a.id}
-                  className="rounded-md bg-gray-50 p-3 text-sm"
+                  className="rounded-xl bg-hueso p-3 text-sm"
                 >
                   <div className="flex items-center gap-2">
                     <span
-                      className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                      className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
                         a.decision === "APROBADO"
-                          ? "bg-green-100 text-green-800"
-                          : "bg-red-100 text-red-800"
+                          ? "bg-verde-sabbi/10 text-verde-sabbi"
+                          : "bg-morado/10 text-morado"
                       }`}
                     >
                       {a.decision}
                     </span>
-                    <span className="text-gray-600">
+                    <span className="text-ink-body">
                       por {a.aprobador.nombre}
                     </span>
-                    <span className="text-gray-400">
+                    <span className="text-ink-caption">
                       {new Date(a.fecha).toLocaleDateString("es-PE")}
                     </span>
                   </div>
                   {a.comentario && (
-                    <p className="mt-1 text-gray-600">{a.comentario}</p>
+                    <p className="mt-1 text-ink-body">{a.comentario}</p>
                   )}
                 </div>
               ))}
@@ -132,8 +133,8 @@ export default async function ProcesoPage({
         )}
       </div>
 
-      <div className="rounded-lg bg-white p-6 shadow-sm">
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">
+      <div className="rounded-2xl border border-border-soft bg-white p-6 shadow-sm">
+        <h2 className="mb-4 text-lg font-bold text-verde-profundo">
           Diagrama del proceso
         </h2>
         <DrawioViewer xml={proceso.contenidoXml} />
