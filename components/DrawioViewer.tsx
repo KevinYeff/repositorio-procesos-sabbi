@@ -46,8 +46,9 @@ export default function DrawioViewer({ xml }: DrawioViewerProps) {
   }, [xml]);
 
   return (
-    <div className="flex min-h-[400px] items-start justify-center rounded-xl border border-border-soft bg-white p-4">
-      <div ref={containerRef} />
-    </div>
+    <div
+      ref={containerRef}
+      className="min-h-[400px] rounded-xl border border-border-soft bg-white p-4"
+    />
   );
 }
